@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+
+\usepackage{nopageno}
+\usepackage{geometry}
+\geometry{paperwidth=3.5in,paperheight=2in,margin=0.25in}
+\usepackage{tikz}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+
+\setlength{\parindent}{0in}
+
+%\newcommand{\name}{Jim Fowler}
+%\newcommand{\email}{fowler@rossprogram.org}
+
+\newcommand{\name}{Daniel Shapiro}
+\newcommand{\email}{shapiro@rossprogram.org}
+
+\begin{document}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node (logo) [anchor=north west] at (current page.north west) {
+      \includegraphics[width=1.15in]{logo-borderless.pdf}
+    };
+    \node (text) [anchor=west] at (logo.east) {
+      \parbox{\textwidth}{%
+        \textbf{\Large\name}\\
+        \texttt{\email}
+      }
+    };
+
+    \node [yshift=-0.35in,anchor=north west] at (text.south west) {
+      \parbox{\textwidth}{
+        \makebox[0in][r]{\color{gray!50!white}\faPhone\hspace{0.4em}}+1 (773) 809--5659 \\
+        \makebox[0in][r]{\color{gray!50!white}\faEnvelope\hspace{0.4em}}\texttt{ross@rossprogram.org}
+        \makebox[0in][r]{\color{gray!50!white}\faHome\hspace{0.4em}}\texttt{https://rossprogram.org/}
+        }
+    };
+
+    
+  \end{tikzpicture}
+
+  \clearpage
+
+  \vfill
+
+  \begin{center}
+    Inspire the next generation\ldots \\
+    \vfill
+    Be a counselor at the Ross Program! \\
+    \vfill    
+    For information, please visit \\
+    \texttt{https://rossprogram.org/counselors/}
+  \end{center}
+  
+  \vfill
+  
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
