@@ -1,11 +1,22 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 
+\usepackage[dvipsnames]{xcolor}
 \usepackage{nopageno}
 \usepackage{geometry}
 \geometry{paperwidth=3.5in,paperheight=2in,margin=0.25in}
 \usepackage{tikz}
 \usepackage{fontawesome}
-\usepackage{xcolor}
+
+\usepackage{colorspace}
+\definespotcolor{ross}{PANTONE Green C}{.93, 0, .63, 0}
+
+\usepackage[
+  width=4in, height=2.5in,
+  % cam, axes, frame, cross,
+  cam,
+  pdftex,
+  center
+]{crop}
 
 \setlength{\parindent}{0in}
 
@@ -17,21 +28,24 @@
 
 \begin{document}
   \begin{tikzpicture}[remember picture,overlay]
-    \node (logo) [anchor=north west] at (current page.north west) {
-      \includegraphics[width=1.15in]{logo-borderless.pdf}
+    \node (logo) [anchor=west, fill=ross, minimum height=2in, inner sep=1em] at (current page.west) {
+        \includegraphics[width=0.8in]{logo-borderless.pdf}
     };
-    \node (text) [anchor=west] at (logo.east) {
-      \parbox{\textwidth}{%
-        \textbf{\Large\name}\\
-        \texttt{\email}
+
+    \node (text) [anchor=north east] at (current page.north east) {
+      \parbox{2in}{%
+      \begin{flushright}
+        \textbf{\textsf{\Large\name}}\\
+        \textit{\textsf{\email}}
+      \end{flushright}
       }
     };
 
-    \node [yshift=-0.35in,anchor=north west] at (text.south west) {
-      \parbox{\textwidth}{
-        \makebox[0in][r]{\color{gray!50!white}\faPhone\hspace{0.4em}}+1 (773) 809--5659 \\
-        \makebox[0in][r]{\color{gray!50!white}\faEnvelope\hspace{0.4em}}\texttt{ross@rossprogram.org}
-        \makebox[0in][r]{\color{gray!50!white}\faHome\hspace{0.4em}}\texttt{https://rossprogram.org/}
+    \node [anchor=south west] at (logo.south east) {
+      \quad\quad\parbox{\textwidth}{
+        \makebox[0in][r]{\color{ross!50!white}\faPhone\hspace{0.4em}}\textsf{+1 (614) 284--7954 }\\
+        \makebox[0in][r]{\color{ross!50!white}\faEnvelope\hspace{0.4em}}\textsf{ross@rossprogram.org} \\
+        \makebox[0in][r]{\color{ross!50!white}\faHome\hspace{0.4em}}\textsf{https://rossprogram.org/}
         }
     };
 
@@ -40,19 +54,27 @@
 
   \clearpage
 
-  \vfill
+  \begin{tikzpicture}[remember picture,overlay]
+    \node (background) [anchor=center, fill=ross, minimum height=2in, minimum width=3.5in]
+    at (current page.center) {
+    };
+    
+    \node (logo) [anchor=south west, opacity=0.15, yshift=-0.5in] at (current page.south west) {
+        \includegraphics[width=2in]{logo-borderless.pdf}
+      };
 
-  \begin{center}
-    Inspire the next generation\ldots \\
-    \vfill
-    Be a counselor at the Ross Program! \\
-    \vfill    
-    For information, please visit \\
-    \texttt{https://rossprogram.org/counselors/}
-  \end{center}
-  
-  \vfill
-  
+      \node (flavor) [anchor=north east] at (current page.north east) {
+        \parbox{3.5in}{%
+          \begin{flushright}\color{white}\sffamily
+            \textbf{Think deeply about simple things.} \\[1ex]
+            Be a counselor at the Ross Program! \\[1ex]
+            For information, please visit \\
+            \texttt{https://rossprogram.org/counselors/}
+          \end{flushright}
+        }
+      };
+    \end{tikzpicture}
+    
 \end{document}
 
 %%% Local Variables:
